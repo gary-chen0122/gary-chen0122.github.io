@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .container {
+        width: 1000px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .left_Btn img {
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+
+    }
+
+    .right_Btn img {
+        width: 50px;
+        height: 50px;
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+
+    <div class="container">
+
+        <!-- 左鍵 -->
+        <div class="left_Btn" id="left_Btn_id">
+            <button type="button">
+                <img src="/button_picture/left.jpg">
+            </button>
+        </div>
+
+        <!-- 圖 -->
+        <div class="picture" id="picture_id">
+            <img class="a" src="/toyota_picture/360EXT_1_22_1.png" alt="">
+        </div>
+
+        <!-- 右鍵 -->
+        <div class="right_Btn" id="right_Btn_id">
+            <button type="button">
+                <img src="/button_picture/right.jpg">
+            </button>
+        </div>
+    </div>
+
+
+
+    <script>
+        let carArr = [];
+
+        const min = 1;
+        const max = 60;
+
+        let pic;
+        let left_btn;
+        let right_btn;
+
+        let img;
+        let imgURL;
+
+        // pic = document.getElementById('picture_id');
+        left_btn = document.getElementById('left_Btn_id');
+        right_btn = document.getElementById('right_Btn_id');
+        img = document.querySelector('.a');
+
+
+
+        window.onload = function () {
+
+
+            pushCar();
+
+            let x = 0;
+
+            // //Default picture
+            // imgURL = `/toyota_picture/360EXT_1_22_${min}.png`;
+
+            // img.setAttribute("src", imgURL);
+
+            // pic.append(img);
+
+
+            left_btn.addEventListener('click', function () {
+                // 點下去之後，左鍵是++
+                debugger;
+                console.log(x);
+                if (x == 59) {
+                    x = 0;
+                } else {
+                    x++;
+                }
+                img.setAttribute('src', carArr[x]);
+
+
+            });
+            right_btn.addEventListener('click', function () {
+                // 點下去之後，左鍵是--
+                if (x == 0) {
+                    x = 59;
+                } else {
+                    x--;
+                }
+
+                img.setAttribute('src', carArr[x]);
+
+
+            });
+
+        };
+
+        function pushCar() {
+
+            for (let i = min; i <= max; i++) {
+
+                imgURL = `toyota_picture/360EXT_1_22_${i}.png`;
+
+                carArr.push(imgURL);
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>
