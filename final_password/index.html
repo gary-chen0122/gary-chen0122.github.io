@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .answer{
+            width: 200px;
+            height: 100px;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>終極數字：(請輸入 0 ~ 100)</h1>
+    <input type="text" class="num-input">
+
+    <button class="btn">點我</button>
+    
+    <div class="answer">
+        <div class="min_num">1</div>
+        ~
+        <div class="max_num">100</div>
+        
+    </div>
+
+    <script>
+
+        let input_num = document.querySelector('.num-input');
+        let myBtn = document.querySelector('.btn');
+        console.dir(myBtn);
+        let min = document.querySelector('.answer .min_num');
+        let max = document.querySelector('.answer .max_num');
+        // console.dir(min);
+
+        let ran_num = Math.floor(Math.random() * 101);
+
+
+        myBtn.addEventListener('click',function(){
+
+            inp_nu_value = input_num.value;
+            min_nu_value = min.innerText;
+            max_nu_value = max.innerText;
+            ran_nu_value = ran_num;
+            guessnumber(inp_nu_value,min_nu_value,max_nu_value,ran_nu_value);
+            
+
+        });
+
+
+        //方法
+        function guessnumber(str,min_num,max_num,ran_num){
+            
+            let input_num = parseInt(str);
+            let min_num1 = parseInt(min_num);
+            let max_num1 = parseInt(max_num);
+            let ran_num2 = parseInt(ran_num);
+            let min_num_2;
+            let max_num_2;
+
+            if(input_num != ran_num2)
+            {
+                if(input_num < ran_num2)
+                {
+                    min_num_2 = input_num;
+                    max_num_2 = max_num1;
+
+                }else if(input_num > ran_num2)
+                {
+                    min_num_2 = min_num1;
+                    max_num_2 = input_num;
+                }
+                min.innerText = min_num_2;
+                max.innerText = max_num_2;
+                // console.log(min_num_1);
+                // console.log(max_num_2);
+
+            }
+            else
+            {
+                alert('恭喜猜對了');
+                // content.innerText = `恭喜猜對了`;
+            }
+
+        }
+    </script>
+
+</body>
+</html>
